@@ -1,0 +1,74 @@
+@font-face {
+  font-family:  'adminFonte';
+  src: url(../fonts/fonte/Oswald-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family:  'Shepa';
+  src: url(../fonts/fonte/MrsSheppards-Regular.ttf) format('truetype');
+}
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: -1px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.esconde{
+    display: none;
+}
+
+
+
+.admin-fonte {
+font-family: adminFonte ;
+}
+
+.navbar-inverse .admin-fonte{
+  color: #fff;
+  letter-spacing: 2px;
+  margin-left: 5px;
+}
+.fonte-saudacao{
+      font-family:  Shepa;
+      font-size: 180px;
+      text-align: center;
+      padding-top: 10%;
+}
+
+.container-central{
+  width: 50%;
+}

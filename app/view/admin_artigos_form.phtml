@@ -1,0 +1,42 @@
+<header class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+    <div class="navbar-header">
+        <p class='admin-fonte navbar-brand'>Admin</p>
+    </div>
+    <nav class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-left">
+            <li><a href='/Admin_Artigos'>Artigos</a></li>
+            <li><a href="">Eventos</a></li>
+     </ul>
+    </nav>
+    </div>
+
+
+</header>
+<h2>Inclusão de Artigos</h2>
+<div class="container-fluid">
+<div class="center-block container-central" >
+    <form  enctype="multpart/form-data" method="post" action="/Admin_Artigos/salvar">
+
+        <div class="form-group">
+                <label for="titulo">Titulo</label>
+                <input class="form-control" type="text" name="titulo" id="titulo" value="<?php echo (isset($titulo)) ? $titulo : '' ?>">
+        </div>
+        <div class="form-group">
+                <label for="conteudo">Texto</label>
+                <textarea class="form-control" name="conteudo" id="conteudo" cols="30" rows="10" ><?php echo (isset($conteudo) ) ? $conteudo : '' ?></textarea>
+        </div>
+        <div class="form-group">
+                <label for='categoria'>Categoria</label>
+                <select class="form-control" name="categoria" id="categoria">
+                    <option value="">Selecione uma categoria</option>
+                </select>
+        </div>
+        <div class="form-group">
+                <label for="novacategoria">Nova Categoria</label>
+                <input class="form-control" type="text" id='novacategoria' name='novacategoria'>
+         </div>
+                <button type="submit" name="categoria" class="btn btn-danger">Salvar</button>
+                <input type="hidden" name='id' value="<?php echo ((isset($id)) ? $id : '') ?>">
+    </form>
+</div>
