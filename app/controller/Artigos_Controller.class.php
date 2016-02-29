@@ -2,23 +2,27 @@
 /**
 *
 */
-class Admin_Artigos_Controller extends Controller
+class Artigos_Controller extends Controller
 {
     private $dataset;
     private $model;
+    private $autenticacao;
 
     function __construct(){
-        $this->model = new Admin_Artigos_Model;
+        $this->autenticacao = new Autenticacao_Controller();
+        $this->model = new Artigos_Model;
     }
 
     public function index_action(){
+        $this->autenticacao->autentica_ok($this->parans);
         $this->listar();
-        $this->view('admin_artigos', $this->dataset);
+        $this->view('artigos', $this->dataset);
 
     }
 
     public function form($campos = NULL){
-        $this->view('admin_artigos_form', $campos);
+
+        $this->view('artigos_form', $campos);
     }
 
 //Salvar Registros
@@ -69,6 +73,7 @@ class Admin_Artigos_Controller extends Controller
    }
 
    public function edit(){
+        $this->autenticacao->autentica_ok($this->parans);
         $this->artigo(['*'], ['id = '.$this->parans['id']]);
         $this->incluir();
 

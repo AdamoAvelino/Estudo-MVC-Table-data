@@ -7,14 +7,26 @@
  */
 class Admin_Controller extends Controller{
 
-    public function index_action(){
+    private $autenticacao;
 
-        $this->view('admin');
+    function __construct(){
+
+        $this->autenticacao = new Autenticacao_Controller();
+
+    }
+
+    public function index_action(){
+            $this->autenticacao->autentica_ok($this->parans);
+            $this->view('admin');
+
     }
 
     public function login(){
         $this->view('login');
 
     }
+
+
+
 
 }

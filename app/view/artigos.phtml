@@ -5,7 +5,8 @@
     </div>
     <nav class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-left">
-            <li><a href='/Admin_Artigos'>Artigos</a></li>
+            <li><a href='/Admin'>Home</a></li>
+            <li><a href='/Artigos'>Artigos</a></li>
             <li><a href="">Eventos</a></li>
      </ul>
     </nav>
@@ -17,7 +18,7 @@
 <div class="container-fluid">
 
 <h2 class='page-header'>Artigos</h2>
-<form action="/Admin_Artigos/incluir" method="post" style="margin:3px">
+<form action="/Artigos/incluir" method="post" style="margin:3px">
         <button type="submit" class="btn btn-success"><i class="fa fa-plus-square"></i> Incluir</button>
 </form>
 
@@ -29,13 +30,13 @@
             <td><img src="" style='width:20%'><?php echo $titulo ?></td>
             <td style='width:60%'><?php echo $conteudo ?></td>
             <td style='width:10%'>
-                <form action="/Admin_Artigos/edit" method="post">
+                <form action="/Artigos/edit" method="post">
                     <button type="submit" class='btn btn-primary'><i class="fa fa-pencil-square-o"></i> Editar</button>
                     <input type="hidden" name="id"  value="<?php echo $id  ?>">
                 </form>
             </td>
             <td style='width:10%'>
-                <form action="/Admin_Artigos/delete" method="post">
+                <form action="/Artigos/delete" method="post">
                     <input type="hidden" name="id" value="<?php echo $id; ?>">
                     <button type="submit" class='btn btn-danger'><i class="fa fa-trash-o"></i> Excluir</button>
                 </form>

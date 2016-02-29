@@ -11,8 +11,10 @@ abstract class Controller {
     public $evento;
 
     protected function view($arquivo, $var = null){
-        if($var)
+
+        if(is_array($var))
             extract($var);
+
 
         include VIEW."headeradmin.phtml";
         include VIEW."{$arquivo}.phtml";

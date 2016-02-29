@@ -2,7 +2,7 @@
 /**
 *
 */
-class Admin_Artigos_Model extends Model
+class Artigos_Model extends Model
 {
     public $id;
 
@@ -15,7 +15,6 @@ class Admin_Artigos_Model extends Model
     public function salvar(Array $parametros){
 
         $this->insert($parametros);
-
     }
 
     public function listar($col, $where){

@@ -16,11 +16,10 @@ final class System {
     public function __construct(){
 
         $this->getUrl();
-        $this->getPost();
         $this->getExplode();
         $this->getcontroller();
-        $this->autenticacao();
         $this->getAction();
+        $this->getPost();
         $this->getParam();
 
     }
@@ -90,25 +89,6 @@ final class System {
         $objeto = new $controle();
         $objeto->parans = $this->param;
         $objeto->$acao();
-
-
     }
-
-    public function autenticacao(){
-
-
-
-        if($this->controller == 'Admin'){
-            unset($_GET['url']);
-            $_GET['url'] = 'Autenticacao/index_action';
-            $this->getUrl();
-            $this->getExplode();
-            $this->getcontroller();
-        }
-
-    }
-
-
-
 
 }
