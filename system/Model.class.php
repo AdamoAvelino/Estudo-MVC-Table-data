@@ -9,6 +9,7 @@ abstract class Model {
     private $con;
     protected $tabela;
     protected $dataset;
+    public  $id;
 
     public function __construct(){
 
@@ -43,15 +44,19 @@ abstract class Model {
         $query = $this->con->query("SELECT {$col} FROM {$this->tabela} {$cond} {$ord} {$lim} {$off}");
         $query->setFetchMode(PDO::FETCH_ASSOC);
         $this->dataset = $query->fetch();
+        $this->id = ($this->id) ? NULL : $this->id;
         return $this->dataset;
 
     }
 
     protected function insert($campos){
+        $this->getLast();
+        $campos['id'] = $this->id;
         $cols = implode(',', array_keys($campos));
         $vals = "'".implode("','", array_values($campos))."'";
         $sql = "INSERT INTO $this->tabela ($cols) values($vals)";
         $this->con->query($sql);
+        return $this->id;
 
     }
 
@@ -68,10 +73,16 @@ abstract class Model {
     }
 
     protected function delete(Array $condicao){
-
         $sql = "DELETE FROM $this->tabela WHERE ".implode(' ', $condicao);
-
         $this->con->query($sql);
+    }
+
+    private function getLast(){
+       $query = $this->con->query("SELECT (id + 1) incremento FROM {$this->tabela} ORDER BY id DESC LIMIT 1");
+        $query->setFetchMode(PDO::FETCH_ASSOC);
+        $dataset = $query->fetch();
+        extract($dataset);
+        $this->id = $incremento;
 
     }
 }

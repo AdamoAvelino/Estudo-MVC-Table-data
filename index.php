@@ -3,10 +3,7 @@
 define('CONTROLLER', 'app/controller/');
 define('MODEL', 'app/model/');
 define('VIEW', 'app/view/');
-
-define('CONTROLLER_ADMIN', 'app_admin/controller/');
-define('MODEL_ADMIN', 'app_admin/model/');
-define('VIEW_ADMIN', 'app_admin/view/');
+define('HELPERS', 'system/helpers/');
 
 include 'system/Transacao.class.php';
 include 'system/Conexao.class.php';
@@ -15,7 +12,7 @@ include 'system/Controller.class.php';
 include 'system/Model.class.php';
 
 function __autoload($classe) {
-    $include = array(MODEL, CONTROLLER);
+    $include = array(MODEL, CONTROLLER, HELPERS);
     foreach ($include as $diretorio) {
 
         if (file_exists($diretorio . "{$classe}.class.php")) {

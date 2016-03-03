@@ -27,18 +27,17 @@ class Artigos_Controller extends Controller
 
 //Salvar Registros
     public function salvar(){
-
         if(isset($this->parans['id'])){
             $this->model->id = $this->parans['id'];
              $this->model->atualiza($this->parans, ['id = '.$this->model->id]);
              Transacao::executa();
         }else{
-
             $this->model->salvar($this->parans);
             Transacao::executa();
-            $this->getLast();
+            /*$this->getLast();*/
         }
-            $this->artigo(null, ['id = '.$this->model->id]);
+
+            $this->artigo(null, ['id = '. $this->model->id]);
             $this->incluir();
 
     }
@@ -56,10 +55,6 @@ class Artigos_Controller extends Controller
 
     }
 
-//Buscar id do Ultimo Registro
-    private function getLast(){
-        $this->model->getId(['id'], 'id DESC', '1');
-    }
 
 //Buscar Registros unicos ou agrupados
     public function  artigo($col, $where) {

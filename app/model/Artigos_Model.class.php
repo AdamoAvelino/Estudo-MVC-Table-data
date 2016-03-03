@@ -14,17 +14,12 @@ class Artigos_Model extends Model
 
     public function salvar(Array $parametros){
 
-        $this->insert($parametros);
+        $this->id = $this->insert($parametros);
     }
 
     public function listar($col, $where){
 
         return $this->read($col, $where);
-    }
-
-    public function getId($col, $order, $limit){
-        $varset =  $this->read($col, null, $order, $limit);
-        $this->id = $varset[0]['id'];
     }
 
     public function single($col, $where){
@@ -41,4 +36,6 @@ class Artigos_Model extends Model
         $this->update($coluna, $condicao);
 
     }
+
+
 }

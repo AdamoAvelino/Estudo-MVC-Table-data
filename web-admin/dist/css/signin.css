@@ -72,3 +72,7 @@ font-family: adminFonte ;
 .container-central{
   width: 50%;
 }
+
+.linkcego{
+cursor: pointer;
+}

@@ -28,7 +28,6 @@ final class System {
     public function getUrl(){
 
         $this->url = isset($_GET['url']) ? $_GET['url'] : 'home/index_action';
-//        echo $this->url;
 
     }
 

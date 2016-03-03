@@ -17,7 +17,7 @@
 <h2>Inclusão de Artigos</h2>
 <div class="container-fluid">
 <div class="center-block container-central" >
-    <form  enctype="multpart/form-data" method="post" action="/Admin_Artigos/salvar">
+    <form  enctype="multpart/form-data" method="post" action="/Artigos/salvar">
 
         <div class="form-group">
                 <label for="titulo">Titulo</label>
@@ -27,17 +27,24 @@
                 <label for="conteudo">Texto</label>
                 <textarea class="form-control" name="conteudo" id="conteudo" cols="30" rows="10" ><?php echo (isset($conteudo) ) ? $conteudo : '' ?></textarea>
         </div>
-        <div class="form-group">
-                <label for='categoria'>Categoria</label>
+        <div class="form-group" id='seleciona_categoria'>
+                <label for='categoria'>Categoria</label> <a  class='linkcego' id='nova_categoria_link'>Incluir Nova Categoria</a>
+
+            <span class='form-group input-group' id='inclui_nova_categoria' style='display: none'>
+                <input class="form-control" type="text" id='novacategoria' data-url='/categoria/nova/nome'>
+                    <span class='input-group-addon' style='padding: 0'>
+                            <button type="button"  class=' btn btn-sm btn-warning ' id='btnIncluiCategoria'><span class='fa fa-plus-circle'></span></button>
+                    </span>
+            </span>
+
                 <select class="form-control" name="categoria" id="categoria">
-                    <option value="">Selecione uma categoria</option>
+                    <option value='1' selected>Selecione uma categoria</option>
                 </select>
         </div>
-        <div class="form-group">
-                <label for="novacategoria">Nova Categoria</label>
-                <input class="form-control" type="text" id='novacategoria' name='novacategoria'>
-         </div>
-                <button type="submit" name="categoria" class="btn btn-danger">Salvar</button>
+
+                <button type="submit" class="btn btn-danger">Salvar</button>
                 <input type="hidden" name='id' value="<?php echo ((isset($id)) ? $id : '') ?>">
     </form>
+
+
 </div>
