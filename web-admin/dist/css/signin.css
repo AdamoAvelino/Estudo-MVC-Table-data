@@ -76,3 +76,26 @@ font-family: adminFonte ;
 .linkcego{
 cursor: pointer;
 }
+
+figure{
+  padding: 5px;
+  background: #ffffff;
+  position: relative;
+s
+}
+figure img{
+
+  width: 100%;
+  max-height:  30%;
+  margin: 0 auto;
+  z-index: 3;
+
+}
+
+.img-icon{
+  top: 0% !important;
+  left: 45% !important;
+  font-size: 2em !important;
+  position: absolute !important;
+}
+

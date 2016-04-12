@@ -11,21 +11,20 @@
      </ul>
     </nav>
     </div>
-
-
 </header>
-<h2>Inclusão de Artigos</h2>
-<div class="container-fluid">
-<div class="center-block container-central" >
-    <form  enctype="multpart/form-data" method="post" action="/Artigos/salvar">
 
+<div class="container-fluid">
+<h2 class="bg-primary text-center">Inclusão de Artigos</h2>
+<div class="col-md-8" >
+    <form  method="post" action="/Artigos/salvar">
+        <?php extract($view_artigos, EXTR_PREFIX_ALL, 'view'); ?>
         <div class="form-group">
                 <label for="titulo">Titulo</label>
-                <input class="form-control" type="text" name="titulo" id="titulo" value="<?php echo (isset($titulo)) ? $titulo : '' ?>">
+                <input class="form-control" type="text" name="titulo" id="titulo" value="<?php echo (isset($view_titulo)) ? $view_titulo : '' ?>">
         </div>
         <div class="form-group">
                 <label for="conteudo">Texto</label>
-                <textarea class="form-control" name="conteudo" id="conteudo" cols="30" rows="10" ><?php echo (isset($conteudo) ) ? $conteudo : '' ?></textarea>
+                <textarea class="form-control" name="conteudo" id="conteudo" cols="30" rows="10" ><?php echo (isset($view_conteudo) ) ? $view_conteudo : '' ?></textarea>
         </div>
         <div class="form-group" id='seleciona_categoria'>
                 <label for='categoria'>Categoria</label> <a  class='linkcego' id='nova_categoria_link'>Incluir Nova Categoria</a>
@@ -38,13 +37,74 @@
             </span>
 
                 <select class="form-control" name="categoria" id="categoria">
-                    <option value='1' selected>Selecione uma categoria</option>
+
+                    <option value=''>Selecione uma categoria</option>
+
+                    <?php foreach($view_categorias as $option) :  extract($option); ?>
+
+                        <option value='<?php echo $id; ?>' <?php echo ((isset($view_categoria ) and $id == $view_categoria) ? ' selected' : '') ?>><?php echo $nome; ?></option>>
+                    <?php endforeach; ?>
                 </select>
         </div>
 
                 <button type="submit" class="btn btn-danger">Salvar</button>
-                <input type="hidden" name='id' value="<?php echo ((isset($id)) ? $id : '') ?>">
+                <input type="hidden" name='id' value="<?php echo ((isset($view_id)) ? $view_id : '') ?>">
+                <input type="hidden" name="media" id="media"></input>
     </form>
+</div>
+<section >
+<?php
 
 
+if(isset($view_medias)){
+    foreach ($view_medias as $media_src) {
+        extract($media_src);
+            $url;
+    }
+}
+
+?>
+    <p><strong>Imagem Destacada</strong></p>
+    <figure class="col-md-4" >
+        <img src="<?php echo isset($url) ? $url : ""; ?>" alt="" id="imagem_destacada">
+         <span class="glyphicon glyphicon-picture "  id="imagem_destacada_span"></span>
+    </figure>
+    <a href="#pop_img" data-toggle='modal' id="carregar_imagem" data-url='/media/listar'>Incluir Imagem destacada</a>
+</section>
+
+<section class="modal fade" id="pop_img">
+    <article class="modal-dialog">
+        <div class="modal-content">
+            <header class="modal-header">
+                <button class="close" data-dismiss='modal' aria-hidden='true' type="button">&times;</button>
+                <h3 class="modal-title">Selecione Imagem</h3>
+            </header>
+            <section class="modal-body">
+                <div class="tabpanel">
+                    <ul class="nav nav-tabs" role='tablist'>
+                        <li role="presentention"><a href="#upload" aria-controls="" data-toggle="tab" role="tab">Upload</a></li>
+                        <li role="presentention" class="active"><a href="#selecao" aria-controls="" data-toggle="tab" role="tab">Seleção</a></li>
+                    </ul>
+                    <div class="tab-content">
+                            <div class="tab-pane center-block" role="tabpanel" id="upload"  >
+                                <h1 class="text-center">Upload</h1>
+                                <form action="" method='post' class="form-group text-center" id="form-img" enctype="multipart/form-data">
+                                    <label for='imagem' class="btn btn-default" data-url='/media/nova/'>Incluir imagem destacada</label>
+                                    <input class="from-control" type="file" id="imagem" name='imagem_input' style="display: none" data-url='/media/nova/'></input>
+                                    <!-- <p><button type="button" class="btn btn-success">Enviar</button></p> -->
+                                </form>
+                            </div>
+                             <div class="tab-pane active" role="tabpanel" id="selecao">
+                                <h1>Seleção</h1>
+                            </div>
+                    </div>
+
+                </div>
+            </section>
+            <footer class="modal-footer" id='modal-footer'>
+
+            </footer>
+        </div>
+    </article>
+</section>
 </div>

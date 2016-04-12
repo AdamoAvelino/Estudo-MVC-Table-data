@@ -1,10 +1,10 @@
 var ajax;
 function ajaxRequest(){
     ajax = null;
+
     if(window.XMLHttpRequest){
 
         ajax = new XMLHttpRequest();
-
 
     }else if(window.ActiveXObject){
 
@@ -18,24 +18,25 @@ function ajaxRequest(){
     }
 }
 
-function requisicao(tipo){
+function requisicao(tipo, tag, id){
+
 
     if(ajax.readyState == 4){
-
         if(ajax.status == 200){
+
             var resposta = ((tipo == 'texto') ? ajax.responseText : ajax.responseXML);
 
-            inclui_html(resposta);
+            inclui_html(resposta, tag, id);
         }
     }
 }
 
-function aciona_ajax(tipo, url){
-
+function aciona_ajax(tipo, url, metodo, tag, id){
+/*alert(tipo + tag + id);*/
     ajaxRequest();
     ajax.onreadystatechange = function() {
-    requisicao(tipo)
+    requisicao(tipo, tag, id)
     }
-    ajax.open('GET', url);
-    ajax.send(null);
+    ajax.open("post", url);
+    ajax.send(metodo);
 }

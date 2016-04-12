@@ -6,7 +6,8 @@ class Categoria_Model extends Model
 {
 
     public $id;
-    public $dataset;
+    private $dataset;
+    public $categoria_nome;
 
     function __construct()
     {
@@ -16,20 +17,25 @@ class Categoria_Model extends Model
 
     public function nova($colunas){
         $this->insert($colunas);
+    }
+
+    public function listaCategorias($server = NULL){
+        $this->dataset['categoria'] = $this->read(['id','nome']);
+            if($server){
+                return $this->dataset['categoria'];
+            }else{
+               return [$this->dataset['categoria'], $this->tabela];
+            }
 
     }
 
-    public function listaCategorias(){
-        $this->dataset = $this->read(['id','nome']);
-        return $this->montaXml();
+    public function singleCategoria($id){
+            $result = $this->readSingle(null, ['id = '.$id]);
+            extract($result);
+            $this->categoria_nome = $nome;
     }
 //
 
-    public function montaXml(){
-        $xml = new MontaXml();
-       return $xml->montarDocumento($this->dataset, $this->tabela);
-
-    }
 
 
 

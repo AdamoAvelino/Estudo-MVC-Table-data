@@ -8,7 +8,7 @@
 abstract class Model {
     private $con;
     protected $tabela;
-    protected $dataset;
+    protected $recordset;
     public  $id;
 
     public function __construct(){
@@ -30,8 +30,8 @@ abstract class Model {
         $off = ($offset) ? " OFFSET {$offset}" : "";
         $query = $this->con->query("SELECT {$col} FROM {$this->tabela} {$cond} {$ord} {$lim} {$off}");
         $query->setFetchMode(PDO::FETCH_ASSOC);
-        $this->dataset = $query->fetchAll();
-        return $this->dataset;
+        $this->recordset = $query->fetchAll();
+        return $this->recordset;
 
     }
 
@@ -41,11 +41,12 @@ abstract class Model {
         $ord = ($order) ? " ORDER BY {$order}" : "";
         $lim = ($limit) ? " LIMIT {$limit}" : "";
         $off = ($offset) ? " OFFSET {$offset}" : "";
+        /*s*/
         $query = $this->con->query("SELECT {$col} FROM {$this->tabela} {$cond} {$ord} {$lim} {$off}");
         $query->setFetchMode(PDO::FETCH_ASSOC);
-        $this->dataset = $query->fetch();
+        $this->recordset = $query->fetch();
         $this->id = ($this->id) ? NULL : $this->id;
-        return $this->dataset;
+        return $this->recordset;
 
     }
 
@@ -78,10 +79,10 @@ abstract class Model {
     }
 
     private function getLast(){
-       $query = $this->con->query("SELECT (id + 1) incremento FROM {$this->tabela} ORDER BY id DESC LIMIT 1");
+       $query = $this->con->query("SELECT IF(count(id) > 0, ((SELECT id FROM $this->tabela order by id DESC LIMIT 1) + 1), 1) incremento FROM $this->tabela");
         $query->setFetchMode(PDO::FETCH_ASSOC);
-        $dataset = $query->fetch();
-        extract($dataset);
+        $this->recordset = $query->fetch();
+        extract($this->recordset);
         $this->id = $incremento;
 
     }

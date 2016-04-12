@@ -1,7 +1,7 @@
 <div class="container-fluid">
 
         <form class="form-signin" method="post" id='form-login' >
-        <?php foreach($mensagem as $classe => $texto) : ?>
+        <?php foreach($view_mensagem as $classe => $texto) : ?>
         <div class='alert <?php echo $classe?>'><?php echo $texto ?></div>
         <?php endforeach;?>
         <h2 class="form-signin-heading" id='tit-login'>Login</h2>

@@ -14,8 +14,14 @@ class Categoria_Controller extends Controller
     function nova(){
         $this->model->nova($this->parans);
         Transacao::executa();
-         $xml = $this->model->listaCategorias();
+         $data= $this->model->listaCategorias();
+          $xml = $this->montaXml($data[0], $data[1]);
         header('content-type: text/xml');
          echo $xml;
+    }
+
+    private function montaXml($propriedeades, $tabela){
+      $xmlObjeto = new MontaXml();
+       return $xmlObjeto->montarDocumento($propriedeades, $tabela, 'option');
     }
 }
