@@ -17,7 +17,7 @@ class Admin_Controller extends Controller{
 
     public function index_action(){
             $this->autenticacao->autentica_ok($this->parans);
-            $this->view('admin');
+            $this->view('admin', null, true);
 
     }
 

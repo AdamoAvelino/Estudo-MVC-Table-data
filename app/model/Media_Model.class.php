@@ -28,7 +28,7 @@ class Media_Model extends Model
     public function mediaList($server = null){
 
             $where = (($this->id) ? ['id = '.$this->id] : null);
-            if($server){
+            if($server and $where){
                 $this->dataset = $this->readSingle(null, $where);
                 extract($this->dataset);
                 $this->url = $url;

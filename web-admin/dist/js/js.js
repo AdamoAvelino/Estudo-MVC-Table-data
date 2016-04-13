@@ -1,19 +1,32 @@
 //Funções carregam eventos de formulario.
 window.onload = function () {
 
+tinyMCE.init(
+	{
+		selector : '#conteudo',
+		language : 'pt_BR',
+		theme: 'modern',
+                plugins: 'code image textcolor colorpicker link',
+                toolbar: ['undo redo | styleselect | bold italic | link image | alignleft aligncenter alignright | code | forecolor backcolor'],
+                menubar: false
+	}); 
+
 /*função para substituir os botoões de login ou cadastro*/
     if(document.getElementById('cad')){
     document.getElementById('cad').onclick = function () {
         if (document.getElementById('confirmPassword').getAttribute('class') == 'form-control esconde') {
+            document.getElementById('form-login').setAttribute('action' , 'autenticacao/cadastro');
             document.getElementById('confirmPassword').setAttribute('class', 'form-control');
             document.getElementById('confirmPassword').setAttribute('required', 'required');
+            document.getElementById('inputNome').setAttribute('class', 'form-control');
+            document.getElementById('inputNome').setAttribute('required', 'required');
             document.getElementById('tit-login').innerHTML = 'Cadastro';
-            document.getElementById('form-login').setAttribute('action' , 'autenticacao/cadastro');
-
             this.innerHTML = 'Login';
         }else{
             document.getElementById('confirmPassword').setAttribute('class', 'form-control esconde');
             document.getElementById('confirmPassword').removeAttribute('required');
+            document.getElementById('inputNome').setAttribute('class', 'form-control esconde');
+            document.getElementById('inputNome').removeAttribute('required');
             document.getElementById('tit-login').innerHTML = 'Login';
             document.getElementById('form-login').setAttribute('action' , 'admin');
             this.innerHTML = 'Cadastrar Usuário';

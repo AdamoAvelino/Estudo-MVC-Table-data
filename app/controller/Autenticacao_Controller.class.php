@@ -37,8 +37,8 @@ class Autenticacao_Controller extends Controller {
 
                 $aut = new Model_Autenticacao();
                 $valida = $aut->autentica($this->parans['email'], $this->parans['senha']);
-
                 if (isset($valida[0])) {
+                    $this->parans['nome'] = $valida[0]['nome'];
                     $this->altentica();
                     $mensagen['alert-success'] = '';
                 } else{
@@ -67,6 +67,7 @@ class Autenticacao_Controller extends Controller {
 
         $_SESSION['login'] = $this->parans['email'];
         $_SESSION['senha'] = $this->parans['senha'];
+        $_SESSION['nome'] = $this->parans['nome'];
         $this->auth = TRUE;
     }
 
@@ -91,7 +92,7 @@ class Autenticacao_Controller extends Controller {
         if ($this->parans['senha'] == $this->parans['confirmaSenha']) {
 
             $cad = new Model_Autenticacao();
-            $cad->cadastrar(['email' => $this->parans['email'], 'senha' => $this->parans['senha']]);
+            $cad->cadastrar(['email' => $this->parans['email'], 'senha' => $this->parans['senha'], 'nome' => $this->parans['nome']]);
             $this->altentica();
             header("Location: /admin");
         }else{
@@ -128,7 +129,8 @@ class Autenticacao_Controller extends Controller {
 
         $template = (implode(' ', array_keys($mensagem)) == 'alert-success') ? 'admin' : 'login';
         $msg['mensagem'] = ($template == 'login') ? $mensagem : null;
-        $this->view($template, $msg);
+        $menuheader = ($template == 'admin') ? true : null;
+        $this->view($template, $msg, $menuheader);
         exit();
     }
 

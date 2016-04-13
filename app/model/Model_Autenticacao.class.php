@@ -24,7 +24,7 @@ class Model_Autenticacao extends Model{
 
     public function autentica($email, $senha){
         $this->tabela = 'usuarios';
-        return $this->read(['email, senha'], ["email = '$email' ", "AND senha = '$senha'"]);
+        return $this->read(['email, senha, nome'], ["email = '$email' ", "AND senha = '$senha'"]);
     }
 
     /*

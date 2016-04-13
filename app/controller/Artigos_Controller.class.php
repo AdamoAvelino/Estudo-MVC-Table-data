@@ -16,12 +16,12 @@ class Artigos_Controller extends Controller
     public function index_action(){
         $this->autenticacao->autentica_ok($this->parans);
         $this->listar();
-        $this->view('artigos', $this->dataset);
+        $this->view('artigos', $this->dataset, true);
 
     }
 
     public function form($campos){
-        $this->view('artigos_form', $campos);
+        $this->view('artigos_form', $campos, true);
     }
 
 //Salvar Registros

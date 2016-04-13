@@ -19,15 +19,19 @@ class Artigos_Model extends Model
     }
 
     public function salvar(Array $parametros){
-
+        
+        $parametros['data'] = date('Y-m-d');
+        $parametros['autor'] = $_SESSION['nome'];
         $this->id = $this->insert($parametros);
     }
 
     public function listar($col, $where){
 
         $this->dataset['artigos']  = $this->read($col, $where);
-        $this->getCategoria();
-        $this->getMedia();
+        if($this->dataset['artigos']){
+            $this->getCategoria();
+            $this->getMedia();
+        }
         return $this->dataset;
 
     }
@@ -35,8 +39,10 @@ class Artigos_Model extends Model
     public function single($col = null, $where){
             $this->dataset['artigos'] = $this->readSingle($col, $where);
             $this->dataset['categorias'] = $this->model_categoria->listaCategorias(TRUE);
-            $this->model_media->id = $this->dataset['artigos']['media'];
-            $this->dataset['medias'] = $this->model_media->mediaList();
+            if($this->dataset['artigos']['media']){
+                $this->model_media->id = $this->dataset['artigos']['media'];
+                $this->dataset['medias'] = $this->model_media->mediaList();
+            }
             return $this->dataset;
     }
 
@@ -51,9 +57,9 @@ class Artigos_Model extends Model
 
     }
 
-    private function getMedia($media_id = null){
+    private function getMedia(){
                 foreach ($this->dataset['artigos'] as $artigos) {
-                    $this->model_media->id = $artigos['media'];
+                    $this->model_media->id = ($artigos['media']) ? $artigos['media'] : 0;
                     $this->model_media->mediaList(TRUE);
                     $artigos['media_url'] =  $this->model_media->url;
                     $dataset_artigos[] = $artigos;

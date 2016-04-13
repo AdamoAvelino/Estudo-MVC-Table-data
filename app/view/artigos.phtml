@@ -1,49 +1,39 @@
-<header class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-    <div class="navbar-header">
-        <p class='admin-fonte navbar-brand'>Admin</p>
-    </div>
-    <nav class="navbar-collapse collapse">
-        <ul class="nav navbar-nav navbar-left">
-            <li><a href='/Admin'>Home</a></li>
-            <li><a href='/Artigos'>Artigos</a></li>
-            <li><a href="">Eventos</a></li>
-     </ul>
-    </nav>
-    </div>
-</header>
 
 <div class="container-fluid">
 
-<h2 class='page-header text-center bg-primary'>Artigos</h2>
-<form action="/Artigos/incluir" method="post" style="margin:3px">
+    <h2 class='page-header text-center bg-primary'>Artigos</h2>
+    <form action="/Artigos/incluir" method="post" style="margin:3px">
         <button type="submit" class="btn btn-success"><i class="fa fa-plus-square"></i> Incluir</button>
-</form>
+    </form>
 
-<div class='table-responsive'>
-    <table class='table table-bordered table-striped' >
+    <div class='table-responsive'>
+        <table class='table table-bordered table-striped' >
 
-        <?php foreach($view_artigos as  $artigo) : extract($artigo, EXTR_PREFIX_ALL, 'artigo'); ?>
-        <tr>
-            <td><img src="<?php echo $artigo_media_url?>" style='width:80%'></td>
-            <td style='width:60%'>
-                <h3><?php echo $artigo_titulo ?></h3>
-                <?php echo $artigo_conteudo ?>
-            </td>
-            <td style='width:10%'>
-                <form action="/Artigos/edit" method="post">
-                    <button type="submit" class='btn btn-primary'><i class="fa fa-pencil-square-o"></i> Editar</button>
-                    <input type="hidden" name="id"  value="<?php echo $artigo_id  ?>">
-                </form>
-            </td>
-            <td style='width:10%'>
-                <form action="/Artigos/delete" method="post">
-                    <input type="hidden" name="id" value="<?php echo $artigo_id; ?>">
-                    <button type="submit" class='btn btn-danger'><i class="fa fa-trash-o"></i> Excluir</button>
-                </form>
-            </td>
-        </tr>
-    <?php endforeach; ?>
+            <?php foreach ($view_artigos as $artigo) : extract($artigo, EXTR_PREFIX_ALL, 'artigo'); ?>
+                <tr>
+                    <td><img src="<?php echo $artigo_media_url ?>" style='width:80%'></td>
+                    <td style='width:60%'>
+                        <p class="etiqueta pull-left"><span class="label label-warning">Autor | <?php echo $artigo_autor?></span></p>
+                        <p class="etiqueta pull-right"><span class="label label-warning">Data | <?php echo implode('/', array_reverse(explode('-',($artigo_data))))?></span></p>
+                        <span class="clearfix"></span>
+                        <h3><?php echo $artigo_titulo ?></h3>
+                        <?php echo $artigo_conteudo ?>
+                        <p class="etiqueta pull-left"><span class='label label-info'>Categoria | <?php echo $artigo_nome_categoria; ?></span></p>
+                    </td>
+                    <td style='width:10%'>
+                        <form action="/Artigos/edit" method="post">
+                            <button type="submit" class='btn btn-primary'><i class="fa fa-pencil-square-o"></i> Editar</button>
+                            <input type="hidden" name="id"  value="<?php echo $artigo_id ?>">
+                        </form>
+                    </td>
+                    <td style='width:10%'>
+                        <form action="/Artigos/delete" method="post">
+                            <input type="hidden" name="id" value="<?php echo $artigo_id; ?>">
+                            <button type="submit" class='btn btn-danger'><i class="fa fa-trash-o"></i> Excluir</button>
+                        </form>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
 
-    </table>
-</div>
+        </table>
+    </div>
