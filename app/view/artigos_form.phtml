@@ -25,7 +25,7 @@
 
                     <option value=''>Selecione uma categoria</option>
 
-                    <?php foreach ($view_categorias as $option) : extract($option); ?>
+                    <?php  foreach ($view_categorias as $option) : extract($option); ?>
 
                         <option value='<?php echo $id; ?>' <?php echo ((isset($view_categoria) and $id == $view_categoria) ? ' selected' : '') ?>><?php echo $nome; ?></option>>
                     <?php endforeach; ?>
@@ -38,17 +38,10 @@
         </form>
     </div>
     <section >
-        <?php
-        if (isset($view_medias)) {
-            foreach ($view_medias as $media_src) {
-                extract($media_src);
-                $url;
-            }
-        }
-        ?>
+        
         <p><strong>Imagem Destacada</strong></p>
         <figure class="col-md-4" >
-            <img src="<?php echo isset($url) ? $url : ""; ?>" alt="" id="imagem_destacada">
+            <img src="<?php echo isset($view_media_url) ? $view_media_url : ""; ?>" alt="" id="imagem_destacada">
             <span class="glyphicon glyphicon-picture "  id="imagem_destacada_span"></span>
         </figure>
         <a href="#pop_img" data-toggle='modal' id="carregar_imagem" data-url='/media/listar'>Incluir Imagem destacada</a>

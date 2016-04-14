@@ -9,6 +9,7 @@ abstract class Controller {
 
     public $parans;
     public $evento;
+    private $usuario;
 
     protected function view($arquivo, $var = null, $menu = null){
 /*var_dump($var);*/

@@ -8,12 +8,13 @@
 
     <div class='table-responsive'>
         <table class='table table-bordered table-striped' >
+            <?php // var_dump($view_artigos); ?>
 
             <?php foreach ($view_artigos as $artigo) : extract($artigo, EXTR_PREFIX_ALL, 'artigo'); ?>
                 <tr>
                     <td><img src="<?php echo $artigo_media_url ?>" style='width:80%'></td>
                     <td style='width:60%'>
-                        <p class="etiqueta pull-left"><span class="label label-warning">Autor | <?php echo $artigo_autor?></span></p>
+                        <p class="etiqueta pull-left"><span class="label label-warning">Autor | <?php echo $artigo_autor_nome?></span></p>
                         <p class="etiqueta pull-right"><span class="label label-warning">Data | <?php echo implode('/', array_reverse(explode('-',($artigo_data))))?></span></p>
                         <span class="clearfix"></span>
                         <h3><?php echo $artigo_titulo ?></h3>

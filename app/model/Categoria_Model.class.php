@@ -28,11 +28,16 @@ class Categoria_Model extends Model
             }
 
     }
+    
+    public function relaciona($array){
+        extract($this->dataset);
+        $array['nome_categoria'] = $nome;
+        return $array;
+    }
 
     public function singleCategoria($id){
-            $result = $this->readSingle(null, ['id = '.$id]);
-            extract($result);
-            $this->categoria_nome = $nome;
+            $this->dataset = $this->readSingle(null, ['id = '.$id]);
+            
     }
 //
 

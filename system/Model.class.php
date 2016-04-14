@@ -28,9 +28,12 @@ abstract class Model {
         $ord = ($order) ? " ORDER BY {$order}" : "";
         $lim = ($limit) ? " LIMIT {$limit}" : "";
         $off = ($offset) ? " OFFSET {$offset}" : "";
+//        echo "<h1></h1>";
+//        echo "SELECT {$col} FROM {$this->tabela} {$cond} {$ord} {$lim} {$off}";
         $query = $this->con->query("SELECT {$col} FROM {$this->tabela} {$cond} {$ord} {$lim} {$off}");
         $query->setFetchMode(PDO::FETCH_ASSOC);
         $this->recordset = $query->fetchAll();
+//        var_dump($this->recordset);
         return $this->recordset;
 
     }
