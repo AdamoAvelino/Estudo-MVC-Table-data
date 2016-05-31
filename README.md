@@ -7,17 +7,15 @@ padrão MVC e Table Data Gateway.</p>
 <h4>Caso haja um desejo de ver como funciona.</h4>
 <p>É necessario criar um arquivo com o nome "banco.ini" e configurar da seguinte maneira:</p>
 <ul>
-<li>host = <i font-color='red'>endereço-do-servidor (pode ser localhost ou 127.0.0.1)</i></li>
-<li>banco = <i style='color:green'>nome-do-banco-de-dados</i></li>
-<li>usuario = <i style='color:green'>nome-do-usuario-do-banco</i></li>
-<li>senha = <i style='color:green'>senha-do-usuario-do-banco</i></li>
+<li>host = <i>endereço-do-servidor (pode ser localhost ou 127.0.0.1)</i></li>
+<li>banco = <i>nome-do-banco-de-dados</i></li>
+<li>usuario = <i>nome-do-usuario-do-banco</i></li>
+<li>senha = <i>senha-do-usuario-do-banco</i></li>
 </ul>
-#Depois de criar o arquivo, salve no diretorio system.
-
-#É utilizado o SGBD mysql.
-
-#Existe também um arquivo sql com as instruções da criação das tabelas do banco de dados.
-#Copie o conteudo "tabelas.sql"(localizado em no diretório suprimento), eexecute em um editor de sua preferência.
+<p>Depois de criar o arquivo, salve no diretorio system.</p>
+<h5>É utilizado o SGBD mysql.</h5>
+<p>Existe também um arquivo sql com as instruções da criação das tabelas do banco de dados</p>
+<p>Copie o conteudo "tabelas.sql"(localizado em no diretório suprimento), eexecute em um editor de sua preferência.<p>
 
 #---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
