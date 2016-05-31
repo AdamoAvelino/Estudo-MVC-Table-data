@@ -3,7 +3,7 @@
 #Este código é a penas uma material para fins didáticos.
 #O objetivo é apresentar a criação de um simples blog, programando em Orientação a Objetos com php e utilizando o
 #padrão MVC e Table Data Gateway.
-
+<p>Teste</p>
 #-----------------------------------------------------------------------------------------------------------------------------------------------------
 #Caso haja um desejo de ver como funciona:
 #é necessario criar um arquivo com o nome "banco.ini" e configurar da seguinte maneira:
