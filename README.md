@@ -4,14 +4,14 @@
 O objetivo é apresentar a criação de um simples blog, programando em Orientação a Objetos com php e utilizando o
 padrão MVC e Table Data Gateway.</p>
 <hr />
-#Caso haja um desejo de ver como funciona:
-#é necessario criar um arquivo com o nome "banco.ini" e configurar da seguinte maneira:
-
-#host = endereço-do-servidor (pode ser localhost ou 127.0.0.1)
-#banco = nome-do-banco-de-dados
-#usuario = nome-do-usuario-do-banco
-#senha = senha-do-usuario-do-banco
-
+<h4>Caso haja um desejo de ver como funciona.</h4>
+<p>É necessario criar um arquivo com o nome "banco.ini" e configurar da seguinte maneira:</p>
+<ul>
+<li>host = endereço-do-servidor (pode ser localhost ou 127.0.0.1)</li>
+<li>banco = nome-do-banco-de-dados</li>
+<li>usuario = nome-do-usuario-do-banco</li>
+<li>senha = senha-do-usuario-do-banco</li>
+</ul>
 #Depois de criar o arquivo, salve no diretorio system.
 
 #É utilizado o SGBD mysql.
