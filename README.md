@@ -17,12 +17,10 @@ padrão MVC e Table Data Gateway.</p>
 <p>Existe também um arquivo sql com as instruções da criação das tabelas do banco de dados</p>
 <p>Copie o conteudo "tabelas.sql"(localizado em no diretório suprimento), eexecute em um editor de sua preferência.<p>
 
-#---------------------------------------------------------------------------------------------------------------------------------------------------------------
+<p>Até o atual momento, os testes poderão ser feitos apenas digitando o url-do-diretorio/admin.</p>
+<p>Pois apenas a área administrativa está funcionando.</p>
 
-#Até o atual momento, os testes poderão ser feitos apenas digitando o url-do-diretorio/admin.
-#Pois apenas a área administrativa está funcionando.
-
-#Para que funcione corretamente, é necessário configurar o arquivo host do sistema operacional e criar um Vhost no apache.
+<p>Para que funcione corretamente, é necessário configurar o arquivo host do sistema operacional e criar um Vhost no apache.</p>
 
 
 
