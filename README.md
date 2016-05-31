@@ -7,10 +7,10 @@ padrão MVC e Table Data Gateway.</p>
 <h4>Caso haja um desejo de ver como funciona.</h4>
 <p>É necessario criar um arquivo com o nome "banco.ini" e configurar da seguinte maneira:</p>
 <ul>
-<li>host = endereço-do-servidor (pode ser localhost ou 127.0.0.1)</li>
-<li>banco = nome-do-banco-de-dados</li>
-<li>usuario = nome-do-usuario-do-banco</li>
-<li>senha = senha-do-usuario-do-banco</li>
+<li>host = <i style='color:green'>endereço-do-servidor (pode ser localhost ou 127.0.0.1)</i></li>
+<li>banco = <i style='color:green'>nome-do-banco-de-dados</i></li>
+<li>usuario = <i style='color:green'>nome-do-usuario-do-banco</i></li>
+<li>senha = <i style='color:green'>senha-do-usuario-do-banco</i></li>
 </ul>
 #Depois de criar o arquivo, salve no diretorio system.
 
