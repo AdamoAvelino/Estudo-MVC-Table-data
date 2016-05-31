@@ -1,9 +1,9 @@
-# Estudo-MVC-Table-data
-#Estudo para o novo projeto
-#Este código é a penas uma material para fins didáticos.
-#O objetivo é apresentar a criação de um simples blog, programando em Orientação a Objetos com php e utilizando o
+<h2> Estudo-MVC-Table-data</h2>
+#<h3>Estudo para o novo projeto</h3>
+#<p>Este código é a penas uma material para fins didáticos.</p>
+#<p>O objetivo é apresentar a criação de um simples blog, programando em Orientação a Objetos com php e utilizando o</p>
 #padrão MVC e Table Data Gateway.
-<p>Teste</p>
+Teste
 #-----------------------------------------------------------------------------------------------------------------------------------------------------
 #Caso haja um desejo de ver como funciona:
 #é necessario criar um arquivo com o nome "banco.ini" e configurar da seguinte maneira:
