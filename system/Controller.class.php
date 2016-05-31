@@ -12,9 +12,7 @@ abstract class Controller {
     private $usuario;
 
     protected function view($arquivo, $var = null, $menu = null){
-/*var_dump($var);*/
         if(is_array($var)){
-             /*var_dump($var); die();*/
             extract($var, EXTR_PREFIX_ALL, 'view');
         }
         

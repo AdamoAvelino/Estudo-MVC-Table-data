@@ -75,6 +75,11 @@ document.getElementById('imagem').onchange = function(){
         aciona_ajax('xml', url, null, "select", 'categoria');
 
     }
+    
+    document.getElementById('remove-imagem').onclick = function(){
+        document.getElementById('imagem_destacada').removeAttribute('src');
+        document.getElementById('media').value = 0;
+    }
 }
 
 /* =============================================================================*/

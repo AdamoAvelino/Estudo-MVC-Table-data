@@ -12,6 +12,7 @@
  * @author adamo
  */
 class Usuario_Controller extends Controller{
+    private $dataset;
     private $model;
     private $dados;
     
@@ -20,7 +21,13 @@ class Usuario_Controller extends Controller{
     }
     
     public function Index_Action(){
-        
+        $this->listar();
+        $this->view('usuario', $this->dataset, true);
+    }
+    
+    
+    private function listar(){
+        $this->dataset = $this->model->listaUsuario();
     }
     
     public function getUsuario(){

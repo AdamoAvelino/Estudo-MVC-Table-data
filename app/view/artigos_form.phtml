@@ -41,10 +41,11 @@
         
         <p><strong>Imagem Destacada</strong></p>
         <figure class="col-md-4" >
-            <img src="<?php echo isset($view_media_url) ? $view_media_url : ""; ?>" alt="" id="imagem_destacada">
+            <img src="<?php echo isset($view_media_url) ? $view_media_url : ""; ?>" data-id="<?php echo (isset($view_media)) ? $view_media : '' ?>" alt="" id="imagem_destacada">
             <span class="glyphicon glyphicon-picture "  id="imagem_destacada_span"></span>
         </figure>
-        <a href="#pop_img" data-toggle='modal' id="carregar_imagem" data-url='/media/listar'>Incluir Imagem destacada</a>
+        <a href="#pop_img" data-toggle='modal' id="carregar_imagem" data-url='/media/listar'><span class="glyphicon glyphicon-plus"></span> Incluir Imagem destacada</a>
+        <a href="#" class="pull-right" id="remove-imagem"><span class="glyphicon glyphicon-remove "></span> Remover Imagem</a>
     </section>
 
     <section class="modal fade" id="pop_img">

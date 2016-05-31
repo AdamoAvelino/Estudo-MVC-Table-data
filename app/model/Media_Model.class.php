@@ -29,7 +29,6 @@ class Media_Model extends Model {
         $where = (($this->id) ? ['id = ' . $this->id] : null);
         if ($server and $where) {
             $this->dataset = $this->readSingle(null, $where);
-            
         } else {
 
             $this->dataset = $this->read(null, $where);
@@ -48,16 +47,18 @@ class Media_Model extends Model {
             }
         }
     }
-    
-    public function relaciona($array){
-        extract($this->dataset);
-        $array['tipo_media'] = $tipo;
-        $array['media_url'] = $url;
-        return $array;
-    }
 
     private function armazenaArquivo() {
         move_uploaded_file($_FILES['imagem_input']['tmp_name'], '.' . $this->url . $this->img);
+    }
+
+    public function relaciona($array) {
+        if (!isset($this->dataset[0])) {
+            extract($this->dataset);
+            $array['tipo_media'] = $tipo;
+            $array['media_url'] = $url;
+        }
+        return $array;
     }
 
 }

@@ -78,11 +78,9 @@ class Artigos_Model extends Model {
     private function getUsuario() {
         foreach ($this->dataset['artigos'] as $artigos) {
             $this->model_usuario->singleUsuario(null, ["id = " . $artigos['autor']]);
-//            $artigos['autor_nome'] = $this->model_usuario->usuario_nome;
             $dataset_artigos[] = $this->model_usuario->relaciona($artigos);
         }
         $this->updateDataset($dataset_artigos);
-//        var_dump($this->dataset);
     }
 
     private function updateDataset($dataset_artigos) {

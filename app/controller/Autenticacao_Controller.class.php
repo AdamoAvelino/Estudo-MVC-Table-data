@@ -11,8 +11,7 @@ class Autenticacao_Controller extends Controller {
 
     private $auth;
     public $param;
-    private $usuario;
-
+    
 /*
 * Metodo Construtor inisia sessão e atrubui u valor booleano a propriedade privatda $auth
 */
@@ -38,9 +37,8 @@ class Autenticacao_Controller extends Controller {
 
                 $aut = new Model_Autenticacao();
                 $valida = $aut->autentica($this->parans['email'], $this->parans['senha']);
-                if (isset($valida)) {
-                    $this->altentica();
-                    $this->usuario = $valida;
+                if ($valida) {
+                    $this->altentica($valida);
                     $mensagen['alert-success'] = '';
                 } else{
                     $mensagen['alert-danger'] = "Email ou senha Não Existe";
@@ -64,10 +62,11 @@ class Autenticacao_Controller extends Controller {
     * O metodo autentica, carrega as variaveis de sessão e valida a propriedade auth
     */
 
-    private function altentica() {
+    private function altentica($dados) {
 
-        $_SESSION['login'] = $this->parans['email'];
-        $_SESSION['senha'] = $this->parans['senha'];
+        $_SESSION['login'] = $dados['email'];
+        $_SESSION['senha'] = $dados['senha'];
+        $_SESSION['id'] = $dados['id'];
         $this->auth = TRUE;
         
     }
@@ -136,7 +135,7 @@ class Autenticacao_Controller extends Controller {
     }
     
     public function getUsuario($param) {
-        return ($param == '*') ? $this->usuario : $this->usuario[$param]; 
+        return $_SESSION['id']; 
         
     }
 

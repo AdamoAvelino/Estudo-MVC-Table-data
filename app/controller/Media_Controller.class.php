@@ -23,6 +23,10 @@ class Media_Controller extends Controller
           $data = $this->model->mediaList();
           $this->montaXml($data, 'media');
     }
+    
+    public function excluir(){
+        
+    }
 
     private function montaXml($propriedades, $tabela){
         header('content-type: text/xml');
